@@ -1,5 +1,4 @@
 # Billage__Back-end
-Billage__Back-end
 
 ### 1) 가상환경 생성 및 실행
 
@@ -31,7 +30,7 @@ MysqlDB [Billage]> grant all privileges on Billage.* to 'root'@'%' identified by
 
 ```
 {
-	"SECRET_KEY":"따로 제공",
+    "SECRET_KEY":"따로 제공",
     "DB_PASSWORD": "최초실행시생성한비밀번호"
 }
 
