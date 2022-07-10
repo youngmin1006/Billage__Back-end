@@ -1,6 +1,5 @@
 from django.db import models
 
-# Create your models here.
 class Board(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=150,verbose_name='글 제목')
@@ -13,9 +12,16 @@ class Board(models.Model):
     process_status = models.CharField(max_length=2,verbose_name="상태")  
 
     def __str__(self):
-        return self.title
+        return str(self.title)
 
-# class BoardInfo(models.Model):
-#     id = models.AutoField(primary_key=True)
-#     board_id = models.ForeignKey(Board,related_name="boardinfo", on_delete=models.CASCADE, db_column="board_id")
-    
+
+class Board_comments(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    board_id = models.ForeignKey("Board", related_name="comment", on_delete=models.CASCADE, db_column="board_id")
+    content = models.TextField(blank=False)
+    create_time = models.DateTimeField(auto_now_add=True) 
+    writer = models.ForeignKey("accounts.User",  related_name="comment", on_delete=models.CASCADE)
+    comment_id = models.ForeignKey("self", related_name="reply", on_delete=models.CASCADE, db_column="comment_id", null=True, blank=True)
+
+
+
