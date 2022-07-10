@@ -15,7 +15,7 @@ from rest_framework.views import APIView
 # Create your views here.
 class BoardViewSet(viewsets.ModelViewSet):
     authentication_classes = [BasicAuthentication, SessionAuthentication]
-    # permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [IsAuthenticatedOrReadOnly]
     queryset = Board.objects.all()
     serializer_class = BoardSerializer
 

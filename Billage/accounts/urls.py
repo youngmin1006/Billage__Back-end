@@ -7,4 +7,6 @@ urlpatterns =[
     path('signup/', views.UserCreate.as_view()),
     path('api-auth/', include('rest_framework.urls')),
     path('userlist/', UserListAPI.as_view()),
+    path('login/', views.LoginView.as_view()),
+    path('logout/',views.LogoutView.as_view()),
  ]

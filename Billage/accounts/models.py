@@ -52,7 +52,12 @@ class User(AbstractBaseUser):
     # 사용자의 username field는 email으로 설정
     USERNAME_FIELD = 'email'
     # 필수로 작성해야하는 field
-    REQUIRED_FIELDS = ['email', 'name', 'phone']
+    REQUIRED_FIELDS = ['name', 'phone']
+
+    class Meta:
+        verbose_name = 'User'
+        verbose_name_plural = 'Users'
+
 
     def __str__(self):
         return str(self.member_id)
