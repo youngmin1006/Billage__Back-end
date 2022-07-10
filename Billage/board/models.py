@@ -9,7 +9,7 @@ class Board(models.Model):
     create_time = models.DateTimeField(auto_now_add=True,verbose_name='글 작성 시간')
     category = models.CharField(max_length=20,verbose_name="분류")
     price = models.CharField(max_length=20,verbose_name="가격")
-    process_status = models.CharField(max_length=2,verbose_name="상태")  
+    process_status = models.CharField(max_length=20,verbose_name="상태")  
 
     def __str__(self):
         return str(self.title)
