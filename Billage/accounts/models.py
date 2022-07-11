@@ -1,11 +1,10 @@
+from locale import atoi
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 class UserManager(BaseUserManager):
     # 일반 user 생성
-    def create_user(self, member_id, email, name, phone, password=None):
-        if not member_id:
-            raise ValueError('must have user member_id')
+    def create_user(self, email, name, phone, password=None):
         if not email:
             raise ValueError('must have user email')
         if not name:
@@ -14,7 +13,7 @@ class UserManager(BaseUserManager):
             raise ValueError('must have user phone')
         user = self.model(
             email = self.normalize_email(email),
-            member_id = member_id,
+            member_id = User.objects.latest('id').id + 111111,
             name = name,
             phone = phone,
         )
